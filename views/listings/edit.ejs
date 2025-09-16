@@ -1,0 +1,69 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+  @media (max-width: 768px) {
+      .form-container {
+          padding: 10px;
+          width: 100%; 
+      }
+  
+      .form-group {
+          display: block; 
+          width: 100%;
+          margin-bottom: 10px;
+      }
+  
+      .form-group input,
+      .form-group textarea {
+          width: 100%;
+      }
+  }
+  
+</style>
+  
+
+  <body>
+    <div class="row">
+      <div class="col-8 offset-2">
+        <br>
+        <h3>Edit your Listing</h3>
+        <br>
+        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="title" class="form-lable">Title</label>
+            <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-lable">Description</label>
+            <textarea name="listing[description]" class="form-control"><%= listing.description %></textarea>              
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-lable">Upload Image</label>
+            <input name="listing[image]"  type="file" class="form-control"/>
+          </div>
+
+          <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-lable">Price</label>
+            <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control"/>
+          </div>
+
+          <div class="mb-3 col-md-8">
+            <label for="country" class="form-lable">Country</label>
+            <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control"/>
+          </div>
+        </div>
+
+          <div class="mb-3">
+            <label for="location" class="form-lable">Location</label>
+            <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control"/>
+          </div>
+
+          <div class="mb-3 mt-3 ">
+            <button class="btn btn-dark edit-btn">Edit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>

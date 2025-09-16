@@ -1,0 +1,271 @@
+<style>
+  .btn-secondary {
+    background-color: whitesmoke;
+    border: none;
+  }
+
+  .dropdown img {
+    width: 4rem;
+    margin-right: 7rem;
+  }
+
+  .search input {
+    text-align: center;
+  }
+
+  .search form {
+    position: relative;
+    right: 18rem;
+  }
+
+  .info1 b {
+    position: relative;
+    right: -3rem;
+    top: -1.75rem;
+  }
+
+  .info2 b {
+    position: relative;
+    right: -2.8rem;
+    top: -1.75rem;
+  }
+
+  .info3 b {
+    position: relative;
+    right: -3rem;
+    top: -1.75rem;
+  }
+
+  .info4 b {
+    position: relative;
+    right: -3rem;
+    top: -1.75rem;
+  }
+
+  .user img {
+    width: 4rem;
+    position: relative;
+    right: 3rem;
+  }
+
+  .submenu {
+    position: absolute;
+    top: 100%;
+    right: 5%;
+    width: 300px;
+    max-height: 0px;
+    overflow: hidden;
+  }
+
+  .submenuopen {
+    max-height: 400px;
+  }
+
+  .sub {
+    background: bisque;
+    padding: 37px;
+    margin: 12px;
+  }
+
+  .info1 img {
+    width: 2rem;
+    position: relative;
+    right: 1px;
+  }
+
+  .info2 img {
+    width: 2rem;
+    position: relative;
+    right: -0.5rem;
+  }
+
+  .info3 img {
+    width: 2rem;
+    position: relative;
+    top: 4px;
+    right: -3px;
+  }
+
+  .info4 img {
+    width: 2rem;
+    position: relative;
+    right: -6px;
+  }
+
+  .btn-search {
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0.40rem 1rem 0 1rem;
+  }
+
+  .btn-search:hover {
+    background-color: #fe424d;
+    color: #fff;
+  }
+
+  .btn-search i {
+    margin-right: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .search-inp {
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .container-fluid {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar {
+      height: 80px;
+    }
+
+    .navbar.expanded {
+        height: 214px;
+    }
+
+      .navbar-nav,
+      .search,
+      .user {
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar-brand {
+        margin-top: 0.5rem;
+      }
+
+      .search form {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .search input {
+        width: 90%;
+        margin-bottom: 0.5rem;
+      }
+
+      .btn-search {
+        width: 100%;
+      }
+
+      .dropdown img {
+        width: 3rem;
+        margin: 0;
+      }
+
+      .navbar-collapse {
+        text-align: center;
+      }
+
+      .navbar-toggler {
+        border: none;
+      }
+
+      .dropdown-menu {
+        width: 100%;
+        text-align: left;
+        padding-left: 1rem;
+      }
+
+      .info1 img,
+      .info2 img,
+      .info3 img,
+      .info4 img {
+        width: 1.5rem;
+      }
+
+      /* Align dropdown options centrally */
+      .info1,
+      .info2,
+      .info3,
+      .info4 {
+        text-align: left;
+        padding: 0.5rem 0;
+      }
+    }
+</style>
+
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+        <a class="nav-link" href="/bookings">Booking Details</a>
+
+      </div>
+      <div class="navbar-nav ms-auto search">
+        <form class="d-flex" role="search" action="/listings/search/" method="GET">
+          <input class="form-control me-2 search-inp form-select" id="floatingSelect" type="search"
+            placeholder="Search Destinations" name="country">
+          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </form>
+      </div>
+      <div class="user">
+        <div class="d-flex dropdown">
+          <div class="dropdown me-1">
+            <img src="https://cdn-icons-png.flaticon.com/128/64/64572.png" type="button"
+              class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+            </img>
+            <ul class="dropdown-menu">
+              <li>
+                <div class="info1">
+                  <a class="nav-link" href="/listings/new">&nbsp; <img
+                      src="https://cdn-icons-png.flaticon.com/128/10514/10514523.png">&nbsp;&nbsp; <b> Add</b></a>
+                </div>
+              </li>
+              <li>
+                <% if(!currUser){ %>
+                  <div class="info2">
+                    <a class="nav-link" href="/signup"><img
+                        src="https://cdn-icons-png.flaticon.com/128/10479/10479887.png"> &nbsp;<b> Signup</b></a>
+                  </div>
+                  <div class="info3">
+                    <a class="nav-link" href="/login"> <img
+                        src="https://cdn-icons-png.flaticon.com/128/1828/1828395.png"><b>LogIn</b></a>
+                  </div>
+                  <% } %>
+              </li>
+              <li>
+                <% if(currUser){ %>
+                  <div class="info4">
+                    <a class="nav-link" href="/logout"><img
+                        src="https://cdn-icons-png.flaticon.com/128/16579/16579128.png"> &nbsp; <b>logout</b></a>
+                  </div>
+                  <div class="info4">
+                    <a class="nav-link" href="/com">
+                      <img src="https://cdn-icons-png.flaticon.com/512/7867/7867551.png" alt="complaint"> &nbsp;
+                      <b>Complaint</b>
+                    </a>
+                  </div>
+                  <% } %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const navbarToggler = document.querySelector('.navbar-toggler');
+      const navbar = document.querySelector('.navbar');
+
+      navbarToggler.addEventListener('click', () => {
+        navbar.classList.toggle('expanded');
+      });
+    </script>
+
+  </div>
+</nav>

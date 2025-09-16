@@ -1,0 +1,116 @@
+<% layout("/layouts/boilerplate") %>
+    <br>
+
+    <style>
+        .filter a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            text-align: center;
+        }
+
+        #filters {
+            gap: 5rem;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .filter {
+            text-align: center;
+        }
+
+        .filter p {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .show{
+            margin-top: -2rem;
+        }
+    </style>
+    <div id="filters">
+        <div class="filter">
+            <a href="/trending">
+                <div>
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+                <p>Trending</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/rooms">
+                <div>
+                    <i class="fa-solid fa-bed"></i>
+                </div>
+                <p>Rooms</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/iconic-city">
+                <div>
+                    <i class="fa-solid fa-city"></i>
+                </div>
+                <p>Iconic City</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/mountains">
+                <div>
+                    <i class="fa-solid fa-mountain"></i>
+                </div>
+                <p>Mountains</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/castles">
+                <div>
+                    <i class="fa-brands fa-fort-awesome"></i>
+                </div>
+                <p>Castles</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/amazing-pool">
+                <div>
+                    <i class="fa-solid fa-person-swimming"></i>
+                </div>
+                <p>Amazing Pool</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/camping">
+                <div>
+                    <i class="fa-solid fa-campground"></i>
+                </div>
+                <p>Camping</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/farms">
+                <div>
+                    <i class="fa-solid fa-tractor"></i>
+                </div>
+                <p>Farms</p>
+            </a>
+        </div>
+        <div class="show">
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+                <% for(let listing of allListings) { %>
+                    <a href="/listings/<%= listing._id %>" class="listing-link">
+                        <div class="card col listing-card">
+                            <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_img"
+                                style="height: 20rem;">
+                            <div class="card-img-overlay"></div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <b>
+                                        <%= listing.title %>
+                                    </b><br>
+                                    &#8377; <%= listing.price.toLocaleString("en-IN") %> /night
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <% } %>
+            </div>
+        </div>
+    </div>
